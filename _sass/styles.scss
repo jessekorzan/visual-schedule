@@ -16,7 +16,7 @@ $blue: #04BFBF;
 body {
     background: darken($white, 8%);
     color: lighten($black, 5%);
-    font-family:'Gibson W01 Regular';
+    font-family:'Gibson W01 Regular', sans-serif;
     font-weight: 400;
     font-size: 1em;   
     padding: 0;
@@ -31,13 +31,13 @@ section {
 }
 
 h1 {
-    font-family:'Gibson W01 Bold';
+    font-family:'Gibson W01 Bold', sans-serif;
     text-transform: capitalize;   
     transition: all 260ms ease-in-out;
     margin: $spacer * 2 0 $spacer;
 }
 h3 {
-    font-family:'Gibson W01 Bold';
+    font-family:'Gibson W01 Bold', sans-serif;
     font-size: 1.5em;
 }
 p {
@@ -185,6 +185,11 @@ input {
     h1 {
         text-indent: $spacer; 
     }
+    .list-users {
+        p {
+            padding: 0 $spacer;
+        }
+    }
 }
 
 // card/ist UI
@@ -328,7 +333,7 @@ input {
         
         input {
             color: $blue;
-            font-family:'Gibson W01 Bold';
+            font-family:'Gibson W01 Bold', sans-serif;
             
         }
     }
@@ -365,7 +370,7 @@ input {
             z-index: 3;
             //border: none;
             font-size: 26px;
-            font-family:'Gibson W01 Bold';
+            font-family:'Gibson W01 Bold', sans-serif;
             color: $black;
         }
         .ui {
@@ -415,7 +420,9 @@ input {
     }
 }
 [data-state="users"] {
-    padding: 0 $spacer;
+    .list-users, h1 {
+        padding: 0 $spacer;
+    }
     nav:not([class*="ui-schedule"]) {
         display: none;
     }
@@ -449,7 +456,7 @@ input {
     
     .ui-time {
         font-size: 48px;
-        font-family:'Gibson W01 Bold';
+        font-family:'Gibson W01 Bold', sans-serif;
     }
     .ui-label {
         
