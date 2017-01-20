@@ -188,6 +188,9 @@ input {
     .list-users {
         p {
             padding: 0 $spacer;
+            a {
+                text-decoration: underline;
+            }
         }
     }
 }
