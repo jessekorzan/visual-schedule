@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<title>Visual Schedule</title>
+    <meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="description" content="image search">
+	<meta name="author" content="">
+	<meta name="keywords" content="">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="msapplication-tap-highlight" content="no" />
+	
+	<link rel="stylesheet" href="../assets/css/normalize.css">
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script type="text/javascript" src="//fast.fonts.net/jsapi/20a24494-2334-4152-9126-33052f09dd09.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body data-state="users">
+<nav>
+    <ul>
+        <li><a href="#" data-action="back" class="ui-back">All Schedules</a></li>
+    </ul>
+</nav>
+<section class="layout-app">
+    <nav class="ui-schedule">
+        <ul></ul>
+    </nav>
+    <section>
+        <h1>Uh, oh. You shouldn't be reading this.</h1>
+        <div class="list-users"></div>
+        <div class="list-sched"></div>
+    </section>
+</section>
+
+<!-- 
+########################################
+
+    SCHEDULE CARD
+    
+######################################## 
+-->
+<script id="card-item" type="text/template">
+    <div id="{{ id }}" class="card-item {{ class }}">
+        <div class="col">
+            <div>
+            <input class="ui-time" type="time" placeholder="08:30AM" value="{{ time }}" data-target="{{ id }}"/>    
+            <input class="ui-label" type="text" placeholder="label" value="{{ label }}" data-target="{{ id }}"/>
+            </div>
+        </div>
+        <div class="col">
+            <div class="display">
+                <img src="{{ imageURL }}"/>
+            </div>
+        </div>
+        <div class="ui">
+            <button data-action="refresh" data-target="{{ id }}"><span class="material-icons">photo</span></button>
+            <button data-action="add" data-target="{{ id }}"><span class="material-icons">add</span></button>
+            <button data-action="delete" data-target="{{ id }}"><span class="material-icons">delete</span></button>
+        </div>
+    </div>
+    <hr/>
+</script>
+<!-- 
+########################################
+
+    USER CARDS
+    
+######################################## 
+-->
+<script id="user" type="text/template">
+    <span id="{{ userID }}" data-action="{{ action }}" class="card-user {{ class }}" data-target="{{ userID }}">
+        <input type="text" value="{{ name }}" data-target="{{ userID }}" placeholder="edit user name">
+        <div class="ui">
+            <button data-action="edit" data-target="{{ userID }}"><span class="material-icons">edit</span></button>
+            <button data-action="save" data-target="{{ userID }}" class="ui-btn">save</button>
+            <button data-action="removeUser" data-target="{{ userID }}" class="ui-btn alert">delete</button>
+        
+        </div>
+        <i class="material-icons card-close" data-action="save" data-target="{{ userID }}">clear</i>
+    </span>
+</script>
+
+<script id="new-user" type="text/template">
+    <span data-action="{{ action }}" class="card-user {{ class }}" data-target="{{ userID }}">
+        <input type="text" value="Add New Schedule" data-target="{{ userID }}" placeholder="edit user name">   
+    </span>
+</script>
+<!-- 
+########################################
+
+    MODALS
+    
+######################################## 
+-->
+<script id="modal-01" type="text/template">
+    <div class="ui-modal-wrapper">
+        <div class="ui-modal-inner {{ size }}">
+            <i class="material-icons ui-modal-close" data-action="modal-close" onclick="Utilities.modal.destroy();">clear</i>
+            <header>
+                <h2>Delete this user?</h2>
+                <p>You cannot undue this action.</p>
+            </header>
+            <hr>
+            <button class="ui-btn alert" data-action="modal-close" onclick="Users.services.deleteUser('{{ id }}'); Utilities.modal.destroy();">Yes</button><button class="ui-btn secondary" data-action="modal-close"  onclick="Utilities.modal.destroy();">No</button>
+        </div>
+    </div>
+</script>
+<!-- 
+########################################
+
+    NAVS
+    
+######################################## 
+-->
+<script id="nav-item" type="text/template">
+    <li><a href="#" data-action="changeDay" data-target="{{ str }}">{{ str }}</a></li>
+</script>
+<!-- javascript -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/jquery.min.js"><\/script>')</script>
+<script src="../assets/js/mustache.js"></script>
+<script src="../assets/js/jk.utilities.js"></script>
+<script src="../assets/js/jk.schedule.js"></script>
+<script src="../assets/js/jk.users.js"></script>
+<script src="../assets/js/jk.app.js"></script>
+</body>
+</html>
+
+

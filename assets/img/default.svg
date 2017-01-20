@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;}
+	.st1{fill:#E28512;}
+</style>
+<rect x="59.4" y="61.7" class="st0" width="79.3" height="79.3"/>
+<rect x="95.9" y="69.6" class="st1" width="6.3" height="15.9">
+<animate  accumulate="none" additive="replace" attributeName="opacity" begin="0s" calcMode="linear" dur="0.5s" fill="remove" from="1" repeatCount="indefinite" restart="always" to="0">
+	</animate>
+</rect>
+<rect x="108" y="81.3" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -25.8016 106.7146)" class="st1" width="15.9" height="6.3">
+<animate  accumulate="none" additive="replace" attributeName="opacity" begin="0.0625s" calcMode="linear" dur="0.5s" fill="remove" from="1" repeatCount="indefinite" restart="always" to="0">
+	</animate>
+</rect>
+<rect x="115" y="98.2" class="st1" width="15.9" height="6.3">
+<animate  accumulate="none" additive="replace" attributeName="opacity" begin="0.125s" calcMode="linear" dur="0.5s" fill="remove" from="1" repeatCount="indefinite" restart="always" to="0">
+	</animate>
+</rect>
+<rect x="112.7" y="110.2" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -49.5933 116.5695)" class="st1" width="6.3" height="15.9">
+<animate  accumulate="none" additive="replace" attributeName="opacity" begin="0.1875s" calcMode="linear" dur="0.5s" fill="remove" from="1" repeatCount="indefinite" restart="always" to="0">
+	</animate>
+</rect>
+<rect x="95.9" y="117.2" class="st1" width="6.3" height="15.9">
+<animate  accumulate="none" additive="replace" attributeName="opacity" begin="0.25s" calcMode="linear" dur="0.5s" fill="remove" from="1" repeatCount="indefinite" restart="always" to="0">
+	</animate>
+</rect>
+<rect x="74.3" y="115" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -59.4482 92.7777)" class="st1" width="15.9" height="6.3">
+<animate  accumulate="none" additive="replace" attributeName="opacity" begin="0.3125s" calcMode="linear" dur="0.5s" fill="remove" from="1" repeatCount="indefinite" restart="always" to="0">
+	</animate>
+</rect>
+<rect x="67.4" y="98.2" class="st1" width="15.9" height="6.3">
+<animate  accumulate="none" additive="replace" attributeName="opacity" begin="0.375s" calcMode="linear" dur="0.5s" fill="remove" from="1" repeatCount="indefinite" restart="always" to="0">
+	</animate>
+</rect>
+<rect x="79.1" y="76.6" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -35.6564 82.9229)" class="st1" width="6.3" height="15.9">
+<animate  accumulate="none" additive="replace" attributeName="opacity" begin="0.4375s" calcMode="linear" dur="0.5s" fill="remove" from="1" repeatCount="indefinite" restart="always" to="0">
+	</animate>
+</rect>
+</svg>

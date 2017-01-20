@@ -1,0 +1,466 @@
+// vars
+$spacer : 24px;
+// colors
+$white : #FFFFFF;
+$black : #2A2C2B;
+$green: #588F27;
+$red: #D90000;
+$orange: #FF9800;
+$blue: #04BFBF;
+
+@import "nav";
+@import "ui-modal";
+//@import "ui-loading";
+
+// defaults
+body {
+    background: darken($white, 8%);
+    color: lighten($black, 5%);
+    font-family:'Gibson W01 Regular';
+    font-weight: 400;
+    font-size: 1em;   
+    padding: 0;
+}
+
+section {
+    max-width: 960px;
+    padding: $spacer/2 0;
+    margin: 0 auto;
+}
+
+h1 {
+    font-family:'Gibson W01 Bold';
+    text-transform: capitalize;   
+    transition: all 260ms ease-in-out;
+    margin: $spacer * 2 0 $spacer;
+}
+p {
+    font-size: 1.25em;
+    line-height: 1.54em;
+}
+img {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 -4px 0;
+}
+
+hr {
+    border: none;
+    border-bottom: 1px dotted rgba($black, 0.5);
+    height: 8px;
+    clear: both;
+    margin: 0;
+    width: 100%;
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    &:focus {
+        outline: none;
+    }
+}
+
+// inputs
+input {
+    border: none;
+    padding: 8px;
+    margin-bottom: $spacer/4;
+    width: 100%;
+    background: transparent;    
+    border: 1px dotted transparent;
+    &:focus {
+        outline: none;
+        border: 1px dotted $orange;
+        color: $orange;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+// app layout
+.layout-site {
+    padding: $spacer * 6 $spacer;
+    nav {
+        background: $black;
+    }
+    h1 {
+        font-size: 4em;
+    }
+}
+
+// app layout
+.layout-app {
+    h1 {
+        text-indent: $spacer; 
+    }
+}
+
+// card/ist UI
+.card-item, .card-user {
+    .card-close {
+        position: absolute;
+        z-index: 99;
+        top: $spacer/4;
+        right: $spacer/4;
+        cursor: pointer;
+        display: none;
+        transition: all 260ms ease-in-out;
+        &:hover {
+            color: $orange;
+        }
+    }
+    .ui {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 66px;
+        width: 100%;
+        border-top: 1px dashed rgba($black, 0.16);
+        button {
+            position: absolute;
+            background: none;
+            border: none;
+            z-index: 999;
+            padding: $spacer/6 $spacer/2;
+            color: lighten($black, 25%);
+            text-transform: uppercase;
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            line-height: 58px;
+            margin: 0;
+            text-align: center;
+            display: block;
+            transition: all 260ms ease-in-out;
+            // found on the user name list cards
+            &[data-action*="edit"] {
+                bottom: $spacer/2;
+                right: $spacer/2;
+                &:hover {
+                    background: $orange;
+                    color: $white;
+                }
+            }
+            &[data-action*="save"] {
+                bottom: 0px;
+                right: 88px;
+                color: $white;
+                width: auto;
+                height: auto;
+                line-height: 44px;
+                font-size: 14px;
+                min-width: 88px;
+                background: $blue;
+            }
+            &[data-action*="removeUser"] {
+                bottom: 0px;
+                right: 0px;
+                color: $white;
+                background: $red;
+                width: auto;
+                min-width: 88px;
+                height: auto;
+                line-height: 44px;
+                font-size: 14px;
+            }
+            &[data-action*="refresh"] {
+                bottom: 0px;
+                right: $spacer/2 + 45px;
+                bottom: $spacer/2;
+                color: $green;
+                &:hover {
+                    color: $white;
+                    background: $green;
+                }
+            }
+            &[data-action*="add"] {
+                z-index: 9999;
+                background: darken($white, 4%);
+                border-radius: 100%;
+                border: $spacer/4 solid darken($white, 8%);
+                bottom: -28px;
+                height: 54px;
+                width: 54px;
+                left: calc(50% - 22px);
+                &:hover {
+                    color: $white;
+                    background: $orange;
+                }
+                
+            }
+            &[data-action*="delete"] {
+                border-color: transparent;
+                right: $spacer/2;
+                bottom: $spacer/2;
+                color: $red;
+                &:hover {
+                    color: $white;
+                    background: $red;
+                }
+                
+            }
+            &:focus {
+                outline: none;
+            }
+            
+        }
+    }
+}
+// users
+.card-user {
+    position: relative;
+   
+    background: $white;
+    width: 100%;
+    //padding: $spacer;
+    display: block;
+    margin-bottom: 2px;
+    cursor: pointer;
+    transition: all 260ms ease-in-out;
+    input {
+        margin: 0;
+        width: calc(100% - #{$spacer * 2});
+        padding: $spacer;
+        display: inline-block;
+        font-size: 18px;
+        font-weight: bolder;
+        border: none;
+        transition: all 260ms ease-in-out;
+    }
+    .ui {
+        border: none;
+        [data-action="save"], [data-action="removeUser"] {
+            display: none;
+        }
+    }
+    &:hover {
+        
+    }
+    &:after {
+        content: "";
+        position: fixed;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(#000, 0.8);
+        pointer-events: none;
+        opacity: 0;
+        transition: all 260ms ease-in-out;
+    }
+    &.new {
+        color: $orange;
+        background: lighten(yellow, 45%); 
+    }
+    &.edit {
+         z-index: 999;
+        //box-shadow: 0px 0px 8px 4px rgba(#000, 0.06);
+        margin: $spacer 0;
+        padding: $spacer 0 ;
+        .card-close {
+            display: block;
+        }
+        input {
+            position: relative;
+            z-index: 3;
+            //border: none;
+            font-size: 26px;
+            font-family:'Gibson W01 Bold';
+            color: $black;
+        }
+        .ui {
+            border: none;
+            
+            [data-action="edit"] {
+                display: none;
+            }
+            [data-action="save"], [data-action="removeUser"] {
+                display: block;
+            }
+        }
+        &:after {
+            opacity: 1;
+            
+        }
+        &:before {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: $white;
+        }
+    }
+    &.inject {
+        opacity: 0;
+        transform: scale(.95);
+    }
+    @for $i from 1 through 100 {
+
+        &:nth-child(#{$i}) {
+            transition-delay: #{$i * 25}ms;
+        }
+    }
+}
+// states
+[data-state="schedule"] {
+    .list-sched, h1 {
+        padding-left: 150px;
+        padding-right: 0;
+    }
+    .list-users {
+        display: none;
+    }
+}
+[data-state="users"] {
+    padding: 0 $spacer;
+    .ui-back {
+        display: none;
+    }
+}
+
+// list container
+.list-users {
+    
+}
+
+
+// skeleton
+.card-item {
+    position: relative;
+    background: $white;
+    
+    margin-bottom: $spacer/4;
+	display: flex;
+	//-ms-flexbox: flex;
+	//flex-direction:row;
+	//width: calc(100% - #{$spacer * 2});
+	transition: all 260ms ease-in-out;
+	user-select: none;
+	> .col {
+    	position: relative;
+        width: 50%;
+        > div {
+            padding: $spacer $spacer 88px;
+        }
+	}
+    
+    .ui-time {
+        font-size: 48px;
+        font-family:'Gibson W01 Bold';
+    }
+    .ui-label {
+        
+        font-size: 30px;
+        text-transform: capitalize;
+    }
+    .display {
+        position: relative;
+        
+        img {
+            object-fit: cover;
+            height: 300px;
+        }
+    }
+    &.new {
+        background: lighten(yellow, 45%);
+        input {
+            background: none;
+            border: 1px dotted $orange;
+            color: $orange;
+        }
+    }
+    &.delete {
+        opacity: 0;
+        transform: scale(.95);
+    }
+    &.list {
+        opacity: 0;
+    }
+    &:after {
+        content: "";
+        background: rgba($black, 0.85);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 260ms ease-in-out;
+    }
+    &.refresh {
+        &:after {
+            opacity: 1;
+        }
+    }
+    &.inject {
+        opacity: 0;
+        transform: scale(.95);
+    }
+}
+
+.ui-btn, button.ui-btn {
+    border: none;
+    padding: $spacer/2 $spacer;
+    color: $white;
+    text-transform: uppercase;
+}
+
+@media print {
+    @page {
+        margin: 0.2cm;
+    }
+    section { 
+        width: 100%;
+    }
+    hr {
+        display: block;
+        margin: $spacer/4 0;
+    }
+    .list-item {
+        padding: $spacer/4 0;
+        margin: 0;
+        width: 100%;
+        height: 122px;
+        display: block;
+        overflow: hidden;
+        .col {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            padding: 0;
+            height: 122px;
+            overflow: hidden;
+            &:nth-child(2) {
+                right: 0;
+                left: auto;
+            }
+        }
+        img {
+            height: calc(122px - #{$spacer/2});
+            width: auto;
+            float: right;
+        }
+    }
+    .ui-time {
+        font-size: 24px !important;
+    }
+    .ui-label {
+        font-size: 22px !important;
+    }
+    .col.ui {
+        input, &:after {
+            display: none;
+        }
+    }
+    a {
+        display: none !important;
+    }    
+}
