@@ -133,6 +133,14 @@ var App = (function ($) {
                 App.vars.data[App.vars.currentUser].days[App.vars.currentDay][Schedule.services.findCard(_id)].time = $(this).val();
                 App.services.autoSave();
             });
+            $("body").on("keydown", "input", function(e){
+                var _id = $(this).data().target;
+                if (e.keyCode == 13) {
+                    Utilities.pubSub.publish("save", {
+                        id : _id
+                    });
+                }
+            });
             
         },
         subscribers : function() {            
@@ -173,9 +181,13 @@ var App = (function ($) {
     	        }); 
             });
             Utilities.pubSub.subscribe("save", function(obj){
-                App.vars.data[obj.id].name = $("input[data-target='" + obj.id + "'").val();
+                // are we in users or schedule?
+                if (App.vars.state == "users") {
+                    // saving a user name
+                    App.vars.data[obj.id].name = $("input[data-target='" + obj.id + "'").val();
+                }
                 App.services.autoSave();
-                $("[data-target='" + obj.id + "']").removeClass("edit");
+                $("[data-target='" + obj.id + "']").removeClass("edit").blur();
             });    
             Utilities.pubSub.subscribe("back", function(obj){
                 Schedule.views.clearSchedule();

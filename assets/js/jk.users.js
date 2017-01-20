@@ -70,6 +70,7 @@ var Users = (function ($) {
         editUserName : function (id) {
             var _card = $(App.vars.userCard + "[data-target='" + id + "']");
             _card.addClass("edit").find("input").focus();
+            _card.find("input").val(_card.find("input").val());
         }
     }
     return jk;

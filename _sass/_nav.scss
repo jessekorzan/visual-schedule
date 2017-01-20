@@ -1,5 +1,6 @@
 nav:not([class*="ui-schedule"]) {
-    position: absolute;
+    position: fixed;
+    z-index: 999;
     top: 0;
     left: 0;
     right: 0;
@@ -9,10 +10,12 @@ nav:not([class*="ui-schedule"]) {
         padding: 0;
         list-style-type: none;
         li {
-           
             height: auto;
-            display: inline-block;
+            float: left;
             width: auto;
+            height: 68px;
+            margin-left: 1px;
+            overflow: hidden;
             a {
                 position: relative;
                 //background: darken($white, 12%);
@@ -20,7 +23,14 @@ nav:not([class*="ui-schedule"]) {
                 vertical-align: middle;
                 padding: $spacer;
                 font-size: 1em;
-                color: $blue;
+                color: $orange;
+                background: rgba($white, 0.1);
+                span {
+                    float: left;
+                    line-height: 0.8em;
+                    margin-right: $spacer/4;
+                }
+                
             }
             &.title {
                 position: absolute;

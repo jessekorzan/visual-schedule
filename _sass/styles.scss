@@ -20,6 +20,8 @@ body {
     font-weight: 400;
     font-size: 1em;   
     padding: 0;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 section {
@@ -34,9 +36,16 @@ h1 {
     transition: all 260ms ease-in-out;
     margin: $spacer * 2 0 $spacer;
 }
+h3 {
+    font-family:'Gibson W01 Bold';
+    font-size: 1.5em;
+}
 p {
     font-size: 1.25em;
     line-height: 1.54em;
+}
+mark {
+    background: lighten($orange, 35%);
 }
 img {
     width: 100%;
@@ -51,10 +60,10 @@ hr {
     clear: both;
     margin: 0;
     width: 100%;
-    display: none;
 }
 
 a {
+    color: $orange;
     text-decoration: none;
     &:focus {
         outline: none;
@@ -81,12 +90,81 @@ input {
 
 // app layout
 .layout-site {
+    position: relative;
     padding: $spacer * 6 $spacer;
+    
     nav {
-        background: $black;
+        background: linear-gradient(90deg, $black, darken($red, 25%));
+        box-shadow: 0px 4px 8px 4px rgba(#000, 0.2);
+        ul li {
+            a {
+                background: transparent;
+            }
+        }
     }
     h1 {
-        font-size: 4em;
+        font-size: 2.5em;
+        @media screen and (min-width: 480px) { 
+            font-size: 4em;
+        }
+    }
+    h2 {
+        font-size: 1.75em;
+        @media screen and (min-width: 480px) { 
+            font-size: 2em;
+        }
+        margin-bottom: $spacer * 2;
+    }
+    
+    ol {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        li {
+            &:before {
+                content: "check";
+                color: $orange;
+                font-family: "Material Icons";
+                margin-right: $spacer/2;
+            }
+        }
+    }
+    h4, p, ol li {
+        font-size: 1.1em;
+        @media screen and (min-width: 480px) { 
+            font-size: 1.25em;
+            line-height: 1.54em;
+        }
+    }
+    hr {
+        margin: $spacer 0; 
+    }
+    .ui-btn {
+        font-size: 16px;
+        letter-spacing: 0.075em;
+        border-top: 2px solid transparent;
+        border-bottom: 2px solid darken($orange, 8%);
+    }
+    .bg {
+        position: absolute;
+        top: -92%;
+        width: 150%;
+        right: -58%;
+        bottom: 0;
+        background: url("/assets/img/screen.01.png") no-repeat center center;
+        pointer-events: none;
+    }
+    .row {
+        @media screen and (min-width: 480px) { 
+            display: flex;
+        }
+        justify-content: space-between;
+        .col {
+            
+            @media screen and (min-width: 480px) { 
+                 width: 48%;
+            }
+        }
     }
 }
 
@@ -225,7 +303,6 @@ input {
         padding: $spacer;
         display: inline-block;
         font-size: 18px;
-        font-weight: bolder;
         border: none;
         transition: all 260ms ease-in-out;
     }
@@ -237,6 +314,11 @@ input {
     }
     &:hover {
         
+        input {
+            color: $blue;
+            font-family:'Gibson W01 Bold';
+            
+        }
     }
     &:after {
         content: "";
@@ -252,8 +334,11 @@ input {
         transition: all 260ms ease-in-out;
     }
     &.new {
-        color: $orange;
+        color: $orange !important;
         background: lighten(yellow, 45%); 
+        input {
+            color: $orange !important;
+        }
     }
     &.edit {
          z-index: 999;
@@ -319,7 +404,7 @@ input {
 }
 [data-state="users"] {
     padding: 0 $spacer;
-    .ui-back {
+    nav:not([class*="ui-schedule"]) {
         display: none;
     }
 }
@@ -334,9 +419,9 @@ input {
 .card-item {
     position: relative;
     background: $white;
-    
     margin-bottom: $spacer/4;
 	display: flex;
+	justify-content: space-between;
 	//-ms-flexbox: flex;
 	//flex-direction:row;
 	//width: calc(100% - #{$spacer * 2});
@@ -409,56 +494,68 @@ input {
     border: none;
     padding: $spacer/2 $spacer;
     color: $white;
+    background: $orange;
     text-transform: uppercase;
 }
 
 @media print {
     @page {
-        margin: 0.2cm;
+        margin: 0.5cm;
     }
     section { 
         width: 100%;
+        padding: 0;
     }
-    hr {
-        display: block;
-        margin: $spacer/4 0;
+    h1 {
+        font-size: 18px;
+        margin-top: $spacer;
     }
-    .list-item {
-        padding: $spacer/4 0;
+    h2 {
+        font-size: 14px;
+    }
+    .list-sched, h1 {
+        padding: 0 !important;
+    }
+    .card-item {
+        padding: 0;
         margin: 0;
         width: 100%;
-        height: 122px;
         display: block;
-        overflow: hidden;
+        border-top: 1px dotted $black;
+        clear: both;
+        float: left;
+        margin-bottom: $spacer/2;
+        padding-bottom: $spacer/4;
         .col {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            padding: 0;
+            float: left;
             height: 122px;
-            overflow: hidden;
+            > div {
+                padding: $spacer/2;
+            }
             &:nth-child(2) {
-                right: 0;
-                left: auto;
+                float: right;
             }
         }
         img {
-            height: calc(122px - #{$spacer/2});
+            max-height: calc(122px - #{$spacer/2}) !important;
             width: auto;
             float: right;
         }
     }
     .ui-time {
-        font-size: 24px !important;
+        font-size: 18px !important;
+        margin-bottom: -$spacer;
+        padding-left: 0;
+        &:before {
+            content: "access_time";
+            font-family: "Material Icons";
+        }
     }
     .ui-label {
-        font-size: 22px !important;
+        font-size: 16px !important;
     }
-    .col.ui {
-        input, &:after {
-            display: none;
-        }
+    .ui {
+        display: none;
     }
     a {
         display: none !important;
