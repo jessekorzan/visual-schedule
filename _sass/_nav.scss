@@ -1,6 +1,6 @@
 nav:not([class*="ui-schedule"]) {
     position: fixed;
-    z-index: 999;
+    z-index: 99;
     top: 0;
     left: 0;
     right: 0;
@@ -42,6 +42,7 @@ nav:not([class*="ui-schedule"]) {
 
 nav.ui-schedule {
     position: fixed;
+    z-index: 999;
     top: 0;
     left: 0;
     bottom: 0;
