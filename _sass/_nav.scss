@@ -1,6 +1,6 @@
 nav:not([class*="ui-schedule"]) {
     background: linear-gradient(90deg, $black, darken($red, 25%));
-    box-shadow: 0px 4px 8px 4px rgba(#000, 0.2);
+    box-shadow: 0px 4px 18px 4px rgba(#000, 0.2);
     position: fixed;
     z-index: 999;
     top: 0;
