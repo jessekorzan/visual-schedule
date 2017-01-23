@@ -1,6 +1,8 @@
 nav:not([class*="ui-schedule"]) {
+    background: linear-gradient(90deg, $black, darken($red, 25%));
+    box-shadow: 0px 4px 8px 4px rgba(#000, 0.2);
     position: fixed;
-    z-index: 99;
+    z-index: 999;
     top: 0;
     left: 0;
     right: 0;
@@ -16,19 +18,20 @@ nav:not([class*="ui-schedule"]) {
             height: 68px;
             margin-left: 1px;
             overflow: hidden;
+            transition: all 260ms ease-in-out;
             a {
                 position: relative;
-                //background: darken($white, 12%);
                 display: block;
                 vertical-align: middle;
                 padding: $spacer;
                 font-size: 1em;
                 color: $orange;
-                background: rgba($white, 0.1);
                 span {
                     float: left;
                     line-height: 0.8em;
                     margin-right: $spacer/4;
+                    display: block;
+                    height: 68px;
                 }
                 
             }
@@ -42,55 +45,59 @@ nav:not([class*="ui-schedule"]) {
 
 nav.ui-schedule {
     position: fixed;
-    z-index: 999;
-    top: 0;
-    left: 0;
+    z-index: 99;
+    top: 68px;
+    left: $spacer/2;
     bottom: 0;
-    width: 150px;
+    width: 122px;
+    height: calc(100% - 68px);
+    display: table;
     ul {
+        display: table-cell;
+        vertical-align: middle;
         margin: 0;
         padding: 0;
         list-style-type: none;
-        
         li {
-            height: calc(100vh/7);
+            //height: calc((100vh - 68px)/7);
+            height: 44px;
             display: table;
             width: 100%;
+            transition: all 260ms ease-in-out;
             a {
                 position: relative;
                 //background: darken($white, 12%);
                 display: table-cell;
                 vertical-align: middle;
                 width: 100%;
-                padding: $spacer;
-                font-size: 13px;
-                text-transform: uppercase;
+                padding: 0 $spacer/2;
+                height: 44px;
+                //font-size: 13px;
+                text-transform: capitalize;
                 color: $black;
                 transition: all 260ms ease-in-out;
-                border-left: 12px solid $blue;
-                &:after {
-                    content: "";
-                    position: absolute;
-                    z-index: -1;
-                    top: 0;
-                    left: -100%;
-                    width: 100%;
-                    height: 100%;
-                    transition: all 260ms ease-in-out;
-                    background: $blue;
-                }
+                border-radius: 3px;
                 &.on {
-                    color: $white;
-                    
-                    font-weight: 700;
-                    //background: none;
-                     &:after {
-                     left: 0;
-                    }
+                    color: darken($orange, 18%) !important;
+                    background: $orange;
+                }
+                &:hover {
+                    color: darken($orange, 9%) !important;  
+                    padding-left: $spacer - $spacer/4;
+                    transition-delay: 0;
                 }
             }
-            &:last-child {
-                border: none;
+            &.inject {
+                opacity: 0;
+                transform: scale(.75);
+            }
+            @for $i from 1 through 10 {
+                &:nth-child(#{$i}) {
+                    transition-delay: #{360 + ($i * 25)}ms;
+                    &:hover {
+                        transition-delay: 0ms;
+                    }
+                }
             }
         }
     }

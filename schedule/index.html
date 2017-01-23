@@ -18,24 +18,27 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body data-state="users">
-<nav>
-    <ul>
-        <li><a href="#" data-action="back" class="ui-back">All Schedules</a></li>
-        <li><a href="#" data-action="print" onclick="window.print();"><span class="material-icons">print</span></a></li>
-    </ul>
-</nav>
-<section class="layout-app">
-    <nav class="ui-schedule">
-        <ul></ul>
+    <nav>
+        <ul data-nav="users">
+            <li class="title"><a href="../"><span class="material-icons">chevron_left</span>Back</a></li>
+            <li><a href="mailto: visualschedule@emptycan.com">email support</a></li>
+        </ul>
+        <ul data-nav="schedule">
+            <li class="title"><a href="#" data-action="back"><span class="material-icons">chevron_left</span>All Schedules</a></a></li>
+            <li><a href="#" data-action="print" onclick="window.print();"><span class="material-icons">print</span></a></li>
+        </ul>
     </nav>
-    <section>
-        <h1>Uh, oh. You shouldn't be reading this.</h1>
-        <div class="list-users">
-            <p>visualschedule.me: <a href="../">home</a> &mdash; <a href="mailto: visualschedule@emptycan.com">email support</a></p>
-        </div>
-        <div class="list-sched"></div>
+    <section class="layout-app">
+        <nav class="ui-schedule">
+            <ul></ul>
+        </nav>
+        <section>
+            <h1>Uh, oh. You shouldn't be reading this.</h1>
+            <div class="list-users">
+            </div>
+            <div class="list-sched"></div>
+        </section>
     </section>
-</section>
 
 <!-- 
 ########################################
@@ -58,7 +61,7 @@
             </div>
         </div>
         <div class="ui">
-            <button data-action="refresh" data-target="{{ id }}"><span class="material-icons">photo</span></button>
+            <button data-action="refresh" data-target="{{ id }}"><span class="material-icons">photo_camera</span></button>
             <button data-action="add" data-target="{{ id }}"><span class="material-icons">add</span></button>
             <button data-action="delete" data-target="{{ id }}"><span class="material-icons">delete</span></button>
         </div>
@@ -101,10 +104,10 @@
         <div class="ui-modal-inner {{ size }}">
             <i class="material-icons ui-modal-close" data-action="modal-close" onclick="Utilities.modal.destroy();">clear</i>
             <header>
-                <h2>Delete this user?</h2>
+                <h2>Delete this schedule?</h2>
                 <p>You cannot undue this action.</p>
             </header>
-            <hr>
+           
             <button class="ui-btn alert" data-action="modal-close" onclick="Users.services.deleteUser('{{ id }}'); Utilities.modal.destroy();">Yes</button><button class="ui-btn secondary" data-action="modal-close"  onclick="Utilities.modal.destroy();">No</button>
         </div>
     </div>
@@ -117,7 +120,7 @@
 ######################################## 
 -->
 <script id="nav-item" type="text/template">
-    <li><a href="#" data-action="changeDay" data-target="{{ str }}">{{ str }}</a></li>
+    <li id="{{ str }}"><a href="#" data-action="changeDay" data-target="{{ str }}">{{ str }}</a></li>
 </script>
 <!-- GA -->
 <script>

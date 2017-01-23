@@ -90,7 +90,7 @@ var Schedule = (function ($) {
             
             _img.attr({"src" : src});
             _img.css({
-                "height" : _img.outerWidth() + "px"
+                //"height" : "300px"
             });
         
         },
@@ -136,7 +136,7 @@ var Schedule = (function ($) {
             Schedule.services.newCard(_newID);
             
             $('html, body').animate({
-                    scrollTop: $("#" + _newID).offset().top
+                    scrollTop: $("#" + _newID).offset().top - 122
             }, 500);
         },
         listDay : function (day) {
@@ -172,6 +172,10 @@ var Schedule = (function ($) {
                         str : i
                     }
     	        });
+    	        $("#" + i).addClass("inject");
+                setTimeout(function(){
+    	            $("#" + i).removeClass("inject");    
+	            }, 260);
             });
         },
 

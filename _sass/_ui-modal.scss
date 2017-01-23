@@ -20,7 +20,7 @@
         display: block;
         margin: 0 auto;
         background: $white;
-        padding: $spacer;
+        padding: $spacer $spacer 66px;
         max-width: 400px;
         max-height: 400px;
         transition: all 260ms ease-in-out;
@@ -38,14 +38,26 @@
     }
     
     .ui-btn {
-        margin-right: 4px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        
         background: $green;
-        margin-top: 44px;
+        width: 88px;
+        height: 44px;
+        padding: 0;
+        line-height: 44px;
+        font-size: 14px;
         &.secondary {
-            background: lighten($black, 40%);
+            
+            background: lighten($black, 45%);
         }
         &.alert {
+            right: 88px;
             background: $red;
+        }
+        &:focus {
+            outline: none;
         }
     }
     header {

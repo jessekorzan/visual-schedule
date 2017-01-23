@@ -8,6 +8,8 @@ $red: #D90000;
 $orange: #FF9800;
 $blue: #04BFBF;
 
+$font-heavy : 'Gibson W01 Bold', sans-serif;
+@import "compass/utilities/general/clearfix";
 @import "nav";
 @import "ui-modal";
 //@import "ui-loading";
@@ -28,13 +30,13 @@ section {
     max-width: 960px;
     padding: $spacer/2 0;
     margin: 0 auto;
+    transition: all 260ms ease-in-out;
 }
 
 h1 {
     font-family:'Gibson W01 Bold', sans-serif;
     text-transform: capitalize;   
-    transition: all 260ms ease-in-out;
-    margin: $spacer * 2 0 $spacer;
+    margin: $spacer * 5 0 $spacer;
 }
 h3 {
     font-family:'Gibson W01 Bold', sans-serif;
@@ -96,14 +98,10 @@ input {
     nav {
         background: linear-gradient(90deg, $black, darken($red, 25%));
         box-shadow: 0px 4px 8px 4px rgba(#000, 0.2);
-        ul li {
-            a {
-                background: transparent;
-            }
-        }
     }
     h1 {
         font-size: 2.5em;
+        margin-top: $spacer * 2;
         @media screen and (min-width: 800px) { 
             font-size: 4em;
         }
@@ -147,6 +145,10 @@ input {
         letter-spacing: 0.075em;
         border-top: 2px solid transparent;
         border-bottom: 2px solid darken($orange, 8%);
+        transition: all 260ms ease-in-out;
+        &:hover {
+            background:  darken($orange, 8%);
+        }
     }
     .bg {
         position: absolute;
@@ -193,10 +195,34 @@ input {
             }
         }
     }
+    section {
+        max-width: 800px + ($spacer * 2);
+        padding: $spacer;
+    }
+}
+
+// states
+[data-state="schedule"] {
+    
+    .list-users, [data-nav="users"] {
+        display: none;    
+    }
+    .layout-app {
+        padding-left: 150px;
+    }
+}
+[data-state="users"] {
+    [data-nav="schedule"] {
+        display: none;    
+    }
+    .layout-app section {
+        max-width: 600px;
+    }
 }
 
 // card/ist UI
 .card-item, .card-user {
+    border-radius: 4px;
     .card-close {
         position: absolute;
         z-index: 99;
@@ -211,6 +237,7 @@ input {
     }
     .ui {
         position: absolute;
+        z-index: 9;
         left: 0;
         bottom: 0;
         height: 66px;
@@ -237,7 +264,7 @@ input {
                 bottom: $spacer/2;
                 right: $spacer/2;
                 &:hover {
-                    background: $orange;
+                    background: darken($orange,12%);
                     color: $white;
                 }
             }
@@ -267,10 +294,10 @@ input {
                 bottom: 0px;
                 right: $spacer/2 + 45px;
                 bottom: $spacer/2;
-                color: $green;
+                color: $blue;
                 &:hover {
                     color: $white;
-                    background: $green;
+                    background: $blue;
                 }
             }
             &[data-action*="add"] {
@@ -299,7 +326,7 @@ input {
                 }
                 
             }
-            &:focus {
+            &:focus, &:active, &:target {
                 outline: none;
             }
             
@@ -309,22 +336,24 @@ input {
 // users
 .card-user {
     position: relative;
-   
+    z-index: 0;
     background: $white;
     width: 100%;
-    //padding: $spacer;
     display: block;
     margin-bottom: 2px;
     cursor: pointer;
+    border-radius: 4px;
     transition: all 260ms ease-in-out;
     input {
+        position: relative;
+        z-index: 1; 
         margin: 0;
         width: calc(100% - #{$spacer * 2});
         padding: $spacer;
         display: inline-block;
         font-size: 18px;
         border: none;
-        transition: all 260ms ease-in-out;
+        transition: all 160ms ease-in-out;
     }
     .ui {
         border: none;
@@ -333,11 +362,12 @@ input {
         }
     }
     &:hover {
-        
-        input {
-            color: $blue;
-            font-family:'Gibson W01 Bold', sans-serif;
+        &:not([class*="edit"]) {
             
+            input {
+                color: darken($orange, 0%) !important;  
+                padding-left: $spacer * 1.25;
+            }
         }
     }
     &:after {
@@ -351,13 +381,13 @@ input {
         background: rgba(#000, 0.8);
         pointer-events: none;
         opacity: 0;
-        transition: all 260ms ease-in-out;
+        transition: opacity 260ms ease-in-out;
     }
     &.new {
-        color: $orange !important;
+        color: $orange;
         background: lighten(yellow, 45%); 
         input {
-            color: $orange !important;
+            color: $orange;
         }
     }
     &.edit {
@@ -373,7 +403,7 @@ input {
             z-index: 3;
             //border: none;
             font-size: 26px;
-            font-family:'Gibson W01 Bold', sans-serif;
+            //font-family:'Gibson W01 Bold', sans-serif;
             color: $black;
         }
         .ui {
@@ -399,6 +429,7 @@ input {
             width: 100%;
             height: 100%;
             background: $white;
+            opacity: 1;
         }
     }
     &.inject {
@@ -406,40 +437,19 @@ input {
         transform: scale(.95);
     }
     @for $i from 1 through 100 {
-
         &:nth-child(#{$i}) {
-            transition-delay: #{$i * 25}ms;
+            transition-delay: #{260 + ($i * 25)}ms;
+            &:hover {
+                transition-delay: 0ms;
+            }
         }
     }
 }
-// states
-[data-state="schedule"] {
-    .list-sched, h1 {
-        padding-left: 150px;
-        padding-right: 0;
-    }
-    .list-users {
-        display: none;
-    }
-}
-[data-state="users"] {
-    .list-users, h1 {
-        padding: 0 $spacer;
-    }
-    nav:not([class*="ui-schedule"]) {
-        display: none;
-    }
-}
-
-// list container
-.list-users {
-    
-}
-
 
 // skeleton
 .card-item {
     position: relative;
+    z-index: 0;
     background: $white;
     margin-bottom: $spacer/4;
 	display: flex;
@@ -468,7 +478,6 @@ input {
     }
     .display {
         position: relative;
-        
         img {
             object-fit: cover;
             height: 300px;
@@ -510,6 +519,11 @@ input {
         opacity: 0;
         transform: scale(.95);
     }
+    @for $i from 100 through 1 {
+        &:nth-child(#{100 - $i}) {
+            z-index: #{$i}; 
+        }
+    }
 }
 
 .ui-btn, button.ui-btn {
@@ -522,15 +536,20 @@ input {
 
 @media print {
     @page {
-        margin: 0.5cm;
+        margin: 0.25cm;
     }
     section { 
         width: 100%;
-        padding: 0;
+        padding: 0 !important;
+    }
+    nav {
+        display: none;
     }
     h1 {
         font-size: 18px;
-        margin-top: $spacer;
+        margin: $spacer/2 0;
+        text-indent: 0px !important;
+        text-align: center;
     }
     h2 {
         font-size: 14px;
@@ -541,37 +560,35 @@ input {
     .card-item {
         padding: 0;
         margin: 0;
-        width: 100%;
+        width: calc(100% - #{$spacer});
+        height: 122px;
         display: block;
-        border-top: 1px dotted $black;
-        clear: both;
-        float: left;
-        margin-bottom: $spacer/2;
-        padding-bottom: $spacer/4;
+        overflow: hidden;
+        border: 1px solid lighten($black, 40%);
+        margin: 0 auto 3px;
+        page-break-inside: avoid;
+        @include clearfix();
         .col {
             float: left;
-            height: 122px;
+            width: 60%;
             > div {
                 padding: $spacer/2;
             }
             &:nth-child(2) {
+                width: 40%;
                 float: right;
             }
         }
-        img {
-            max-height: calc(122px - #{$spacer/2}) !important;
+        .display img {
+            height: 100px !important;
             width: auto;
             float: right;
         }
     }
     .ui-time {
-        font-size: 18px !important;
+        font-size: 24px !important;
+        margin-top: 0;
         margin-bottom: -$spacer;
-        padding-left: 0;
-        &:before {
-            content: "access_time";
-            font-family: "Material Icons";
-        }
     }
     .ui-label {
         font-size: 16px !important;
