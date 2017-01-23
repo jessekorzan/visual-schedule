@@ -21,7 +21,7 @@ var Schedule = (function ($) {
                 class : "new",
                 time : "00:00",
                 id : id,
-                label : "enter label",
+                label : "activity / task",
                 imageURL : App.config.defaults.imgPlaceholder
             } 
             
