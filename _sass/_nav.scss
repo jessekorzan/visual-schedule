@@ -26,6 +26,7 @@ nav:not([class*="ui-schedule"]) {
                 padding: $spacer;
                 font-size: 1em;
                 color: $orange;
+                text-transform: capitalize;
                 span {
                     float: left;
                     line-height: 0.8em;

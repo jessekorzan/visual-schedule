@@ -74,7 +74,10 @@ var App = (function ($) {
             App.vars.state = state;
             $(App.vars.stateContainer).attr({"data-state" : App.vars.state});
         },
-
+        modal : function (e) {
+            e.preventDefault();
+           
+        },
         defaults : function () {
             
             var _saved = JSON.parse(localStorage.getItem(App.vars.file));
@@ -194,6 +197,12 @@ var App = (function ($) {
                 App.views.state("users");
                 App.views.defaults();
             }); 
+            Utilities.pubSub.subscribe("modal", function(obj){
+                Utilities.modal.render({
+                    template : obj.id,
+                    data : {}
+    	        });   
+            });
             window.addEventListener("popstate", function(e) {
                 jk.views.state(e.state);
                 if (e.state == "users") {

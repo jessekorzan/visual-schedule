@@ -20,11 +20,12 @@
 <body data-state="users">
     <nav>
         <ul data-nav="users">
-            <li class="title"><a href="../"><span class="material-icons">chevron_left</span>Back</a></li>
-            <li><a href="mailto: visualschedule@emptycan.com">email support</a></li>
+            <li class="title"><a href="../"><span class="material-icons">chevron_left</span>Home</a></li>
+            <li><a href="#" data-action="modal" data-target="#modal-02">Support</a></li>
         </ul>
         <ul data-nav="schedule">
-            <li class="title"><a href="#" data-action="back"><span class="material-icons">chevron_left</span>All Schedules</a></a></li>
+            <li class="title"><a href="#" data-action="back"><span class="material-icons">chevron_left</span>Schedules</a></a></li>
+            <li><a href="#" data-action="modal" data-target="#modal-02">Support</a></li>
             <li><a href="#" data-action="print" onclick="window.print();"><span class="material-icons">print</span></a></li>
         </ul>
     </nav>
@@ -109,6 +110,17 @@
             </header>
            
             <button class="ui-btn alert" data-action="modal-close" onclick="Users.services.deleteUser('{{ id }}'); Utilities.modal.destroy();">Yes</button><button class="ui-btn secondary" data-action="modal-close"  onclick="Utilities.modal.destroy();">No</button>
+        </div>
+    </div>
+</script>
+<script id="modal-02" type="text/template">
+    <div class="ui-modal-wrapper">
+        <div class="ui-modal-inner {{ size }}">
+            <i class="material-icons ui-modal-close" data-action="modal-close" onclick="Utilities.modal.destroy();">clear</i>
+            <header>
+                <h2>Get Help</h2>
+                <p>Yes. Get help here: <a href="mailto: visualschedule@emptycan.com">visualschedule@emptycan.com</a></p>
+            </header>
         </div>
     </div>
 </script>
