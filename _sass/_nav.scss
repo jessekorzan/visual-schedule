@@ -9,7 +9,7 @@ nav:not([class*="ui-schedule"]) {
     ul {
         float: right;
         margin: 0;
-        padding: 0;
+        padding: 0 $spacer/2 0 0;
         list-style-type: none;
         li {
             height: auto;
@@ -23,7 +23,7 @@ nav:not([class*="ui-schedule"]) {
                 position: relative;
                 display: block;
                 vertical-align: middle;
-                padding: $spacer;
+                padding: $spacer $spacer/2;
                 font-size: 1em;
                 color: $orange;
                 text-transform: capitalize;

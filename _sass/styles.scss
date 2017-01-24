@@ -12,6 +12,7 @@ $font-heavy : 'Gibson W01 Bold', sans-serif;
 @import "compass/utilities/general/clearfix";
 @import "nav";
 @import "ui-modal";
+@import "ui-signin";
 //@import "ui-loading";
 
 // defaults
@@ -91,6 +92,9 @@ input {
 }
 
 // app layout
+.layout-signin {
+    text-align: center;
+}
 .layout-site {
     position: relative;
     padding: $spacer * 6 $spacer;

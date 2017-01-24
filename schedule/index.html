@@ -33,6 +33,7 @@
         <nav class="ui-schedule">
             <ul></ul>
         </nav>
+        
         <section>
             <h1>Uh, oh. You shouldn't be reading this.</h1>
             <div class="list-users">
@@ -40,7 +41,7 @@
             <div class="list-sched"></div>
         </section>
     </section>
-
+    <div id="firebaseui-auth-container"></div>
 <!-- 
 ########################################
 
@@ -146,6 +147,20 @@
 
 </script>
 <!-- javascript -->
+<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDrWjC_lK9Sw1_nSEwNfqXiJTOhwON_yRQ",
+    authDomain: "visual-schedule-260d4.firebaseapp.com",
+    databaseURL: "https://visual-schedule-260d4.firebaseio.com",
+    storageBucket: "visual-schedule-260d4.appspot.com",
+    messagingSenderId: "611668747366"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/jquery.min.js"><\/script>')</script>
 <script src="../assets/js/mustache.js"></script>

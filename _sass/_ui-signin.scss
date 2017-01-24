@@ -1,0 +1,49 @@
+.ui-signin {
+    ul {
+        list-style-type: none;
+        margin: 0px auto;
+        padding: $spacer/2 $spacer;
+        width: calc(100% - #{$spacer*2});
+        max-width: 480px;
+        display: table;
+        li {
+            padding: 1px;
+            //width: 280px;
+            width: 50%;
+            display: table-cell;
+            button {
+                position: relative;
+                background: transparent;
+                background: $black;
+                background: linear-gradient(45deg, $black, darken($red, 25%));
+                display: block;
+                width: 100%;
+                height: auto;
+                display: table;
+                border: none;
+                color: $orange;
+                //font-family: $font-heavy;
+                font-weight: normal;
+                font-size: 18px;
+                border-radius: 3px;
+                padding: $spacer*2 0;
+                img {
+                    margin-bottom: $spacer/2;
+                    height: 44px;
+                    width: 44px;
+                }
+                span {
+                    display: block;
+                    &:last-child {
+                        display: none;
+                    }
+                }
+            }
+            &:nth-child(2n) {
+                button {
+                    background: linear-gradient(-45deg, $black, darken($red, 25%));
+                }
+            }
+        }
+    }
+}
